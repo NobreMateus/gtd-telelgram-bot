@@ -24,3 +24,4 @@ bot.onText(/\/s (.+)/, async  (msg, match) => {
     bot.sendMessage(chatId, "Item Criado!");
   });
   
+console.log("Server Iniciado!")

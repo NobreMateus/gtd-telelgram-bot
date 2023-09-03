@@ -1,8 +1,6 @@
 require('dotenv').config()
 const TelegramBot = require('node-telegram-bot-api');
 const { Client } = require("@notionhq/client")
-const express = require('express')
-const app = express()
 
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
@@ -15,6 +13,7 @@ const notion = new Client({
 })
 
 bot.onText(/\/s (.+)/, async  (msg, match) => {
+    console.log("Nova mensagem de criação de item recebida!")
     const chatId = msg.chat.id;
     const resp = match[1];
 
@@ -25,12 +24,6 @@ bot.onText(/\/s (.+)/, async  (msg, match) => {
 
     bot.sendMessage(chatId, "Item Criado!");
 });
-
-app.get('/', function (req, res) {
-    res.send('Server Iniciado!')
-})
-
-app.listen(8080)
   
 console.log("Server Iniciado!")
 
